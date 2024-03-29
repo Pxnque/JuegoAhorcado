@@ -24,17 +24,17 @@ def palabra_aleatoria():
             if vidas == 1:
                 print("Ultima vida")
             else:
-                print("Vida número #",vidas)
+                print(" ❤ "*vidas)
             print("letras ya adivinadas: ",letras_usadas)
             print("".join(palabra_oculta))
             letra = input("Ingresa una letra para adivinar que palabra es: ")
-        
+            letra = letra.lower()
             if len(letra)>1:
                 for i in range(len(palabra_oculta)):
                     try:
                         if letra[i] == palabra_a[i]:
                             palabra_oculta[i] = letra[i]
-                            acierto = True
+                            
                     except:
                         print("Solo se permite ingresar una letra o la palabra entera")
                         time.sleep(2)
@@ -69,6 +69,7 @@ def palabra_aleatoria():
 
 def palabra_usuario():
     palabra_a = input("Ingresa una palabra a adivinar: ")
+    palabra_a = palabra_a.lower()
     palabra_oculta = ["_"]*len(palabra_a) 
     letras_usadas = []
     vidas = 5
@@ -82,18 +83,19 @@ def palabra_usuario():
             if vidas == 1:
                 print("Ultima vida")
             else:
-                print("Vida número #",vidas)
+                print(" ❤ "*vidas)
             
             print("letras usadas: ",letras_usadas)
             print("".join(palabra_oculta))
             letra = input("Ingresa una letra para adivinar que palabra es: ")
+            letra = letra.lower()
         
             if len(letra)>1:
                 for i in range(len(palabra_oculta)):
                     try:
                         if letra[i] == palabra_a[i]:
                             palabra_oculta[i] = letra[i]
-                            acierto = True
+                            
                     except:
                         print("Solo se permite ingresar una letra o la palabra entera")
                         time.sleep(2)
@@ -146,11 +148,14 @@ def run():
 \____/  /_/  |_|  /_/  /_/  /_____/   
 """
     menu = '''
-HORA DE JUGAR AL AHORCADO
-Menú:
-1. Jugar con palabra aleatoria
-2. Jugar con palabra ingresada por el usuario
-3. Salir
+_____________________________________________________    
+|    HORA DE JUGAR AL AHORCADO                      |
+|                                                   |
+|    Menú:                                          |
+|    1. Jugar con palabra aleatoria                 |
+|    2. Jugar con palabra ingresada por el usuario  |
+|    3. Salir                                       |
+|___________________________________________________|           
 '''
     
     
@@ -168,8 +173,10 @@ Menú:
                 palabra_usuario()
             else:
                 print("¡Ingrese una opción valida!")
+                time.sleep(2)
         except:
-            print("Ingrese un número")
+            print("Opción no valida. Asegurese de ingresar un modo de juego disponible.")
+            time.sleep(2)
 
 if __name__ == '__main__':
     run()
